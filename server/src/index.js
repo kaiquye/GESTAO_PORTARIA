@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 // server para o websocket
 const server = require('http').createServer(express());
@@ -19,13 +20,12 @@ class Server {
 
     routes() {
         this.App.get('/teste', (req, res) => {
-            console.log('testando');
+            console.log('testando')
         })
     }
 
     StartServer() {
-        this.
-            this.App.listen(4011, () => console.log('rodando...'))
+        this.App.listen(process.env.PORT, () => console.log(`start server in http://localhost:${process.env.PORT}/`))
     }
 
 }
