@@ -6,10 +6,12 @@ class ControllerVisitante {
     async Create(req, res) {
         try {
             // enviar e-mail
-            // verificar se esta cadastrado
+            /* 
+            segurança
+            */
             const Created = await Services.Create(req.body);
             if (Created instanceof AppError) return res.status(Created.Status).json(Created.Error());
-            res.status(201).json({ message: 'visitante criado com sucesso.', data: 'no data' });
+            res.status(201).json({ message: 'visitante criado com sucesso.', sucesso: true });
         } catch (error) {
             console.log(error)
             res.status(500).json(new AppError(500, 'Erro ao criar um novo visitante').Error());
@@ -18,11 +20,14 @@ class ControllerVisitante {
 
     async FindByPhone(req, res) {
         try {
-            // enviar e-mail
-            // verificar se esta cadastrado
-            const Created = await Services.FindByPhone(req.params);
-            if (Created instanceof AppError) return res.status(Created.Status).json(Created.Error());
-            res.status(201).json({ message: 'visitante criado com sucesso.', data: 'no data' });
+            /* 
+            segurança
+            */
+            console.log(req.params)
+            const Visitante = await Services.FindByPhone(req.params.phone);
+            if (Visitante instanceof AppError) return res.status(Visitante.Status).json(Visitante.Error());
+            if (!Visitante) return res.status(201).json({ data: 'No data !' });
+            return res.status(201).json({ data: Visitante });
         } catch (error) {
             console.log(error)
             res.status(500).json(new AppError(500, 'Erro ao criar um novo visitante').Error());

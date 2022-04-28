@@ -1,10 +1,12 @@
 require('dotenv').config();
 const express = require('express');
+const expressjwt = require('express-jwt')
 // server para o websocket
 const server = require('http').createServer(express());
 const io = require('./src/models/WebSocket');
 const Cors = require('./src/midlleware/cors');
 const Visitantes = require('./src/main/visitantes/visitantes-routes');
+const Operadores = require('./src/main/operador/operador-routes');
 
 class Server {
     App;
@@ -20,6 +22,7 @@ class Server {
     routes() {
         this.App.use('/api', [
             Visitantes,
+            Operadores
         ])
     }
     StartServer() {

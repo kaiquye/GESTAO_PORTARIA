@@ -29,7 +29,7 @@ class ServicesVisitante {
             let Visitante = await Repositories.FindByPhone(phone);
             if (!Visitante) return new AppError(400, 'Visitante não encontrado.');
             console.log(Visitante)
-            return Visitante
+            return Visitante[0]
         } catch (error) {
             console.log(error)
             return new AppError(400, 'erro ao criar um novo visitante');
