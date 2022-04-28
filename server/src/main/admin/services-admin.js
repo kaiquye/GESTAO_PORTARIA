@@ -1,0 +1,1 @@
+const database = require('./admin-repositories');
