@@ -4,6 +4,7 @@ const express = require('express');
 const server = require('http').createServer(express());
 const io = require('./src/models/WebSocket');
 const Cors = require('./src/midlleware/cors');
+const Visitantes = require('./src/main/visitantes/visitantes-routes');
 
 class Server {
     App;
@@ -14,18 +15,17 @@ class Server {
     }
     middlleware() {
         this.App.use(Cors.Config());
+        this.App.use(express.json());
     }
     routes() {
-        this.App.get('/teste', (req, res) => {
-            res.send('opa')
-            console.log('testando')
-        })
+        this.App.use('/api', [
+            Visitantes,
+        ])
     }
     StartServer() {
-        this.App.listen(process.env.PORT, () => console.log(`start server in http://localhost:${process.env.PORT}/`))
+        this.App.listen(process.env.PORT, () => console.log(`start server in ${process.env.URL}`))
     }
 }
-
 (() => {
     // configura o ambiente P/D
     const app = new Server();

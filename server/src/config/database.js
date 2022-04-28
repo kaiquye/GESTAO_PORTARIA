@@ -1,6 +1,4 @@
 const configKnex = require('../../knexfile');
-const connection = require('knex')(configKnex);
+const connection = require('knex')(configKnex.development);
 
-module.export = {
-    ConnectionServer: connection
-}
+module.exports = connection;

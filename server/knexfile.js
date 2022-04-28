@@ -4,7 +4,7 @@ require("dotenv")
  */
 module.exports = {
 
-  // coloar em variaveis de ambiente
+  // colocar em variaveis de ambiente
   development: {
     client: 'mysql',
     connection: {

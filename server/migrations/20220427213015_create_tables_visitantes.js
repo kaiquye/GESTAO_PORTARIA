@@ -19,8 +19,8 @@
         table.boolean('plate_truck').notNullable()
         table.string('s_servico').notNullable()
         table.integer('auth').notNullable().defaultTo('1')
-        table.string('setor_area')
         table.string('services')
+        table.boolean('active').notNullable().defaultTo('1');
         table.timestamp('created_at').defaultTo(knex.fn.now())
         table.timestamp('update_at').defaultTo(knex.fn.now())
     })

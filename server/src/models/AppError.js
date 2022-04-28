@@ -1,14 +1,20 @@
 const HTTP = require('http')
 
-class AppError{
-
-    AppError(status, message){
+class AppError {
+    Status;
+    message;
+    message;
+    constructor(status, message) {
+        this.Status = status
+        this.message = message
+    }
+    Error() {
         return {
-            status : status, 
-            message : message || HTTP.STATUS_CODES[status],
-            sucess : sucess,
+            status: HTTP.STATUS_CODES[this.Status],
+            error: this.message,
+            sucess: false,
         }
     }
 }
 
-module.exports = new AppError();
+module.exports = AppError;
