@@ -19,6 +19,9 @@ class RepositoriesVisitantes {
     async FindByPhone(phone) {
         return Connection('visitantes').where('phone', phone);
     }
+    async AlterStatus(phone, status) {
+        return Connection('visitantes').uptade('status', status).where('phone', phone);
+    }
     // async FindBy() {
     //     return Connection('visitantes').insert({});
     // } 

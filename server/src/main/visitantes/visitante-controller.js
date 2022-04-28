@@ -33,6 +33,21 @@ class ControllerVisitante {
             res.status(500).json(new AppError(500, 'Erro ao criar um novo visitante').Error());
         }
     }
+
+    async AlterStatus(req, res) {
+        try {
+            /* 
+            segurança
+            */
+            const Visitante = await Services.AlterStatus(req.params.phone, req.params.status);
+            if (Visitante instanceof AppError) return res.status(Visitante.Status).json(Visitante.Error());
+            if (!Visitante) return res.status(201).json({ data: 'No data !' });
+            return res.status(201).json({ data: Visitante });
+        } catch (error) {
+            console.log(error)
+            res.status(500).json(new AppError(500, 'Erro ao criar um novo visitante').Error());
+        }
+    }
 }
 
 module.exports = new ControllerVisitante();
