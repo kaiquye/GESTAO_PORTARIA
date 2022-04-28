@@ -9,3 +9,17 @@ Escolher os melhores módulos para usar
 )
 3 -
 Estrutura do projeto
+4 - 
+envio de e-mail
+5 -
+
+
+projeto
+cadastro de veiculos. Quando um caminhão "VISITANTE" chega, criar o cadastro dele no sistema com os dados dele e do caminhão;
+Tela para chamar o visitante caso seja a vez dele. Envio d e-mail para um grupo do setor aceitar. 
+Fazer algo simples, porém que funcione bem. ( boa estrutura de codigo, variaveis bem declaradas )
+@Tabelas 
+Admin : Funcionarios da aplicação (trocar por admin e funcionario comum)
+Visitantes : Donos de caminhão,
+Progamadores : Responsaveis por aceitar 
+So para estudo. 

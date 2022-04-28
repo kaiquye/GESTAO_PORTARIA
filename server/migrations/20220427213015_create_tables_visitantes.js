@@ -3,8 +3,14 @@
  * @returns { Promise<void> }
  */
  exports.up = function (knex) {
+
+    /**
+     * @Tabela Dados os 
+     */
+
+
     return knex.schema.createTable('visitantes', function (table) {
-        table.increments('id')
+        table.increments('id').primary();
         table.string('username').notNullable()
         table.string('setor').notNullable().unique()
         table.string('phone').unique
