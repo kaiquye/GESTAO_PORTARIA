@@ -1,5 +1,6 @@
 const Services = require('./visitantes-services');
 const AppError = require('../../models/AppError');
+const io = require('../../models/WebSocket');
 
 class ControllerVisitante {
 
@@ -41,11 +42,10 @@ class ControllerVisitante {
             */
             const Visitante = await Services.AlterStatus(req.params.phone, req.params.status);
             if (Visitante instanceof AppError) return res.status(Visitante.Status).json(Visitante.Error());
-            if (!Visitante) return res.status(201).json({ data: 'No data !' });
-            return res.status(201).json({ data: Visitante });
+            return res.status(200).json({ message: 'alterado com sucesso.' });
         } catch (error) {
             console.log(error)
-            res.status(500).json(new AppError(500, 'Erro ao criar um novo visitante').Error());
+            res.status(500).json(new AppError(500, 'Erro ao alterar status do visitante').Error());
         }
     }
 }

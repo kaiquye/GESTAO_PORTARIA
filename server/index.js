@@ -7,6 +7,7 @@ const io = require('./src/models/WebSocket');
 const Cors = require('./src/midlleware/cors');
 const Visitantes = require('./src/main/visitantes/visitantes-routes');
 const Operadores = require('./src/main/operador/operador-routes');
+const Admin = require('./src/main/admin/admin-routes');
 
 class Server {
     App;
@@ -21,8 +22,9 @@ class Server {
     }
     routes() {
         this.App.use('/api', [
-            Visitantes,
-            Operadores
+            Visitantes,  // aguardam serem chamados.
+            Operadores, // responsavel por aceita e finalizar as operações dos vistantes.
+            // Admin      // responsavel por cadastrar os visitantes e controllar os acessos dos usuarios.
         ])
     }
     StartServer() {
@@ -32,6 +34,6 @@ class Server {
 (() => {
     // configura o ambiente P/D
     const app = new Server();
-    io.Start(server) // iniciando o websocket
+    new io(server) // iniciando o websocket
     app.StartServer(); // iniciando o servidor
 })()

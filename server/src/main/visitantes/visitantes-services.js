@@ -1,5 +1,6 @@
 const Repositories = require('./visitante-repositories');
 const AppError = require('../../models/AppError');
+const io = require('../../models/WebSocket');
 
 class ServicesVisitante {
 
@@ -50,7 +51,7 @@ class ServicesVisitante {
              * no socket.io
              */
         } catch (error) {
-            console.log(error)
+            console.log(error);
             return new AppError(400, 'erro ao criar um novo visitante');
         }
     }
