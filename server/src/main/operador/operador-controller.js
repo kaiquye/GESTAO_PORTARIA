@@ -12,6 +12,7 @@ class ControllerOperador {
 
     async Create(req, res) {
         try {
+            if (req.role !== 3 /* 3 = ADMIN */ ) return res.status(401).json(new AppError(401, 'Você não tem permissão para criar um novo operador. Entre em contato com um adminitrador.').Error());
             const { username, email, setor, phone, role } = req.body;
             const Created = await Services.Create(username, email, setor, phone, role)
             if (Created instanceof AppError) return res.status(Created.Status).json(Created.Error());
@@ -20,6 +21,18 @@ class ControllerOperador {
             console.log(error)
             res.status(500).json(new AppError(500, 'Erro ao criar um novo operador').Error());
         }
+    }
+
+    async Login(req, res) {
+        /**
+         * @YUP 
+         * @AUTH QUANDO FOR VERIFICAR O CARGO DO USUARIO : JWT, BUSCAR UM USUARIO NO BANCO,
+         * CASO EXITE LIBERAR.
+         */
+        const Authorized = await Services.Login(req.body);
+        if (Authorized instanceof AppError) return res.status(Authorized.Status).json(Authorized.Error());
+        const Token = Authentication.AuthorizedCreateToken(Authorized);
+        return res.status(200).json({ sucess: true, data: Authorized, token: Token });
     }
 }
 

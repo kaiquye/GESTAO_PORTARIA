@@ -10,9 +10,9 @@ class Admin {
              * @YUP 
              * @AUTH QUANDO FOR VERIFICAR O CARGO DO USUARIO : JWT, BUSCAR UM USUARIO NO BANCO,
              * CASO EXITE LIBERAR.
+             * @STATUS 206 
              */
-            console.log(req.role)
-            if (req.role !== 3 /* 3 = ADMIN */ ) return res.status(300).json(new AppError(300, 'Você não tem permissão.'));
+            if (parseInt(req.role) !== 3 /* 3 = ADMIN */ ) return res.status(401).json(new AppError(401, 'Você não tem permissão. Entre em contato com um Administrador.').Error());
             const Created = await Services.Create(req.body);
             if (Created instanceof AppError) return res.status(Created.Status).json(Created.Error());
             return res.status(201).json({ sucess: true, message: 'Admin cadastrado com sucesso.' })

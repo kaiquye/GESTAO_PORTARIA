@@ -28,7 +28,7 @@ class Services {
             /**
              * @TOKEN salvar o Refresh-token no banco ou no Regis 
              */
-            return { id, username, role : '3' /* admin */ } // valido.
+            return { id, username, role : 3 /* admin */ } // valido.
         } catch (error) {
             console.log(error)
             return new AppError(500, 'Não foi possivel cadastra um novo admin');

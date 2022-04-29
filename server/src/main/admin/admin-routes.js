@@ -13,7 +13,7 @@ class Routes {
         this.Route();
     }
     Middleware() {
-        this.App.use(Authorized.VerifyAdmin);
+        this.App.use(Authorized.Verify);
     }
     RoutesPublic() {
         this.App.get('/login-admin', Controller.Login);

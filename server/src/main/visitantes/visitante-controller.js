@@ -10,10 +10,28 @@ class ControllerVisitante {
             /* 
             segurança
             */
+           console.log(req.role)
+            if (parseInt(req.role) !== 3 /* 3 = ADMIN -  */ ) return res.status(401).json(new AppError(401, 'Você não tem permissão para cadastrar um novo visitante. Entre em contato com um administrador.').Error());
             const Created = await Services.Create(req.body);
             if (Created instanceof AppError) return res.status(Created.Status).json(Created.Error());
-
             res.status(201).json({ message: 'visitante criado com sucesso.', sucesso: true });
+        } catch (error) {
+            console.log(error)
+            res.status(500).json(new AppError(500, 'Erro ao criar um novo visitante').Error());
+        }
+    }
+
+    
+    async FindAll(req, res) {
+        try {
+            /* 
+            segurança
+            */
+            const Query = req.query.condition || 'All';
+            const Visitante = await Services.FindAll(Query);
+            if (Visitante instanceof AppError) return res.status(Visitante.Status).json(Visitante.Error());
+            if (!Visitante) return res.status(201).json({ data: 'No data !' });
+            return res.status(201).json({ data: Visitante });
         } catch (error) {
             console.log(error)
             res.status(500).json(new AppError(500, 'Erro ao criar um novo visitante').Error());
@@ -25,7 +43,6 @@ class ControllerVisitante {
             /* 
             segurança
             */
-            console.log(req.params)
             const Visitante = await Services.FindByPhone(req.params.phone);
             if (Visitante instanceof AppError) return res.status(Visitante.Status).json(Visitante.Error());
             if (!Visitante) return res.status(201).json({ data: 'No data !' });
@@ -41,7 +58,7 @@ class ControllerVisitante {
             /* 
             segurança
             */
-            if (req.role < 2 /* 3 = OPDERADOR - ADMIN */ ) return res.status(300).json(new AppError(300, 'Você não tem permissão.'));
+            if (req.role !== 2 /* 2 = OPDERADOR -  */ ) return res.status(401).json(new AppError(401, 'Você não tem permissão para alterar o status de um visitante. Entre em contato com um operador.').Error());
             const Visitante = await Services.AlterStatus(req.params.phone, req.params.status);
             if (Visitante instanceof AppError) return res.status(Visitante.Status).json(Visitante.Error());
             req.io.emit('tested', 'tedted');

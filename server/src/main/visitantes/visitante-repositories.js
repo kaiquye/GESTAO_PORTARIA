@@ -22,9 +22,15 @@ class RepositoriesVisitantes {
     async AlterStatus(phone, status) {
         return Connection('visitantes').update({ status: status }).where('phone', phone);
     }
-    // async FindBy() {
-    //     return Connection('visitantes').insert({});
-    // } FindBySector
+    async FindAllBy(condition) {
+        const All = 'select * from visitantes where status in (0,1,2)'
+        const Waiting = 'select * from visitantes where status = 0'
+        const Loaded = 'select * from visitantes where status = 1'
+        const Finalized = 'select * from visitantes where status = 2'
+        const sql = [All = All, Loaded = Loaded, Waiting = Waiting, Finalized = Finalized]
+        console.log(sql['ALL'])
+        return Connection.raw(sql[condition]);
+    }
 }
 
 module.exports = new RepositoriesVisitantes()
