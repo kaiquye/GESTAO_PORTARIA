@@ -27,7 +27,7 @@ class Server {
         this.App.use('/api', [
             Visitantes,  // aguardam serem chamados.
             Operadores, // responsavel por aceita e finalizar as operações dos vistantes.
-            // Admin      // responsavel por cadastrar os visitantes e controllar os acessos dos usuarios.
+            Admin      // responsavel por cadastrar os visitantes e controllar os acessos dos usuarios.
         ])
 
         

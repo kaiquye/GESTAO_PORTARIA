@@ -37,15 +37,15 @@ class ControllerVisitante {
     }
 
     async AlterStatus(req, res) {
-        console.log('aqui')
         try {
             /* 
             segurança
             */
+            if (req.role < 2 /* 3 = OPDERADOR - ADMIN */ ) return res.status(300).json(new AppError(300, 'Você não tem permissão.'));
             const Visitante = await Services.AlterStatus(req.params.phone, req.params.status);
             if (Visitante instanceof AppError) return res.status(Visitante.Status).json(Visitante.Error());
             req.io.emit('tested', 'tedted');
-            return res.status(200).json({ message: 'alterado com sucesso.' });
+            return res.status(200).json({ sucess: true,  message: 'alterado com sucesso.' });
         } catch (error) {
             console.log(error)
             res.status(500).json(new AppError(500, 'Erro ao alterar status do visitante').Error());
