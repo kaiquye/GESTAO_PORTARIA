@@ -14,7 +14,7 @@ class Routes {
     Route() {
         this.App.post('/create-visitante', Controller.Create); // novo visitante
         this.App.get('/find-visitante/:phone', Controller.FindByPhone); // buscar pelo telefone
-        this.App.patch('/alter-status-visitante/:phone', Controller.AlterStatus);
+        this.App.patch('/alter-status-visitante/:phone/:status', Controller.AlterStatus);
     }
 }
 

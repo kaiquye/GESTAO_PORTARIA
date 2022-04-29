@@ -3,13 +3,12 @@ const { Server } = require('socket.io')
 class WebSocket {
     io;
     constructor(instacerHttp) {
-        this.io = new Server(instacerHttp);
-        this.start();
+        return this.io = new Server(instacerHttp);
     }
 
-    // static start() {
+    // static SendUpdateStatus() {
     //     this.io.on('connection', (socket) => {
-    //         socket.emit('teste', 'teste emit');
+    //         socket.emit('update', 'teste emit');
     //     })
     // }
 

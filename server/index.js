@@ -19,6 +19,9 @@ class Server {
     middlleware() {
         this.App.use(Cors.Config());
         this.App.use(express.json());
+        const socket = new io(server) // iniciando o websocket
+        this.App.use((req, res, next) => { req.io = socket 
+            next() });
     }
     routes() {
         this.App.use('/api', [
@@ -34,6 +37,5 @@ class Server {
 (() => {
     // configura o ambiente P/D
     const app = new Server();
-    new io(server) // iniciando o websocket
     app.StartServer(); // iniciando o servidor
 })()

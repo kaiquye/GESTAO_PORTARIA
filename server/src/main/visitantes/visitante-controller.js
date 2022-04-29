@@ -12,6 +12,7 @@ class ControllerVisitante {
             */
             const Created = await Services.Create(req.body);
             if (Created instanceof AppError) return res.status(Created.Status).json(Created.Error());
+
             res.status(201).json({ message: 'visitante criado com sucesso.', sucesso: true });
         } catch (error) {
             console.log(error)
@@ -36,12 +37,14 @@ class ControllerVisitante {
     }
 
     async AlterStatus(req, res) {
+        console.log('aqui')
         try {
             /* 
             segurança
             */
             const Visitante = await Services.AlterStatus(req.params.phone, req.params.status);
             if (Visitante instanceof AppError) return res.status(Visitante.Status).json(Visitante.Error());
+            req.io.emit('tested', 'tedted');
             return res.status(200).json({ message: 'alterado com sucesso.' });
         } catch (error) {
             console.log(error)
