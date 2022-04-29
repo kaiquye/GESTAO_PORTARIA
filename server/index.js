@@ -29,6 +29,9 @@ class Server {
             Operadores, // responsavel por aceita e finalizar as operações dos vistantes.
             // Admin      // responsavel por cadastrar os visitantes e controllar os acessos dos usuarios.
         ])
+
+        
+        // criar a rota de error
     }
     StartServer() {
         this.App.listen(process.env.PORT, () => console.log(`start server in ${process.env.URL}`))

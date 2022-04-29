@@ -24,7 +24,7 @@ class RepositoriesVisitantes {
     }
     // async FindBy() {
     //     return Connection('visitantes').insert({});
-    // } 
+    // } FindBySector
 }
 
 module.exports = new RepositoriesVisitantes()

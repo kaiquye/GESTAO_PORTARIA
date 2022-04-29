@@ -10,7 +10,7 @@ class ServicesVisitante {
              * @IDEA Verificar se ja exite um visitante ativo. Alterar status
             */
             let checkVisitantates = await Repositories.FindByPhone(phone);
-            if (checkVisitantates) return new AppError(400, 'Já existe um visitante cadastrado, verifique seu painel de visitantes.');
+            if (checkVisitantates[0]) return new AppError(400, 'Já existe um visitante cadastrado, verifique seu painel de visitantes.');
             await Repositories.Create(username, sector /*setor responsavel*/, phone, status_truck, plate_vehicle, plate_truck, active, services, auth);
         } catch (error) {
             console.log(error)
@@ -42,6 +42,7 @@ class ServicesVisitante {
             /**
              * @STATUS 1 : AGUARDANDO 2: CARREGANDO 3: CARREGADO
             */
+           // PASSA O EMAIL OU NOME DO OPERADOR QUE ACEITO A CARGA
             let Check = await Repositories.FindByPhone(phone);
             if (!Check) return new AppError(400, 'Visitante não encontrado.');
             await Repositories.AlterStatus(phone, status);
