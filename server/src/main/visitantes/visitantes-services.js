@@ -24,9 +24,7 @@ class ServicesVisitante {
             /**
              * @IDEA 
             */
-            let Visitante = await Repositories.FindAll(condition);
-            console.log(Visitante)
-            return Visitante[0]
+            let Visitante = await Repositories.FindAllBy(condition);
         } catch (error) {
             console.log(error)
             return new AppError(400, 'Erro ao busca visitantes.');

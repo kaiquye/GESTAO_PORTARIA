@@ -16,7 +16,7 @@ class Routes {
         this.App.use(Authorized.Verify);
     }
     RoutesPublic() {
-        this.App.get('/login-admin', Controller.Login);
+        this.App.post('/login-admin', Controller.Login);
     }
     Route() {
         this.App.post('/create-admin', Controller.Create);

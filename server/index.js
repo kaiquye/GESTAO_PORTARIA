@@ -20,17 +20,15 @@ class Server {
         this.App.use(Cors.Config());
         this.App.use(express.json());
         const socket = new io(server) // iniciando o websocket
-        this.App.use((req, res, next) => { req.io = socket 
-            next() });
+        this.App.use((req, res, next) => {
+            req.io = socket
+            next()
+        });
     }
     routes() {
-        this.App.use('/api', [
-            Visitantes,  // aguardam serem chamados.
-            Operadores, // responsavel por aceita e finalizar as operações dos vistantes.
-            Admin      // responsavel por cadastrar os visitantes e controllar os acessos dos usuarios.
-        ])
-
-        
+        this.App.use('/admin', Admin);  // responsavel por cadastrar os visitantes e controllar os acessos dos usuarios.
+        this.App.use('/visitante', Visitantes);   // aguardam serem chamados.
+        this.App.use('/operadores', Operadores); // responsavel por aceita e finalizar as operações dos vistantes.F
         // criar a rota de error
     }
     StartServer() {

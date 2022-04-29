@@ -28,6 +28,7 @@ class Admin {
          * @AUTH QUANDO FOR VERIFICAR O CARGO DO USUARIO : JWT, BUSCAR UM USUARIO NO BANCO,
          * CASO EXITE LIBERAR.
          */
+        console.log('tedted')
         const Created = await Services.Login(req.body);
         if (Created instanceof AppError) return res.status(Created.Status).json(Created.Error());
         const Token = Authentication.AuthorizedCreateToken(Created);
