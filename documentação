@@ -37,6 +37,8 @@ Progamadores : Responsaveis por aceitar
 So para estudo. 
 
 
+// CONSULTA DE STATUS 
+
 '100': 'Continue',
   '101': 'Switching Protocols',
   '102': 'Processing',
