@@ -22,12 +22,12 @@ class ControllerVisitante {
     }
 
     
-    async FindAll(req, res) {
+    async FindBySituaion(req, res) {
         try {
             /* 
             segurança
             */
-            const Query = req.query.condition || 'All';
+            const Query = req.query.condition || 'all' ;
             const Visitante = await Services.FindAll(Query);
             if (Visitante instanceof AppError) return res.status(Visitante.Status).json(Visitante.Error());
             if (!Visitante) return res.status(201).json({ data: 'No data !' });

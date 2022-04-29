@@ -23,12 +23,14 @@ class RepositoriesVisitantes {
         return Connection('visitantes').update({ status: status }).where('phone', phone);
     }
     async FindAllBy(condition) {
-        // console.log(condition)
-        // const All = 'select * from visitantes where status in (0,1,2)'
-        // const Waiting = 'select * from visitantes where status = 0'
-        // const Loaded = 'select * from visitantes where status = 1'
-        // const Finalized = 'select * from visitantes where status = 2'
-        // const sql = [All = All, Loaded = Loaded, Waiting = Waiting, Finalized = Finalized]
+        console.log(condition)
+        // FILTAR QUAL QUERY VAI RODA.        
+        var All = 'select * from visitantes where status in (0,1,2)'
+        var Waiting = 'select * from visitantes where status = 0'
+        var Loaded = 'select * from visitantes where status = 1'
+        var Finalized = 'select * from visitantes where status = 2'
+        var sql = { "All": [All], 'Waiting': [Waiting], "Loaded": [Loaded], "Finalized": [Finalized] }
+        return Connection.raw(sql[condition][0])
     }
 }
 

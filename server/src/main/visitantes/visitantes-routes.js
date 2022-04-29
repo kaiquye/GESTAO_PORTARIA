@@ -19,7 +19,7 @@ class Routes {
         this.App.post('/create-visitante', Controller.Create); // novo visitante
         this.App.get('/find-visitante/:phone', Controller.FindByPhone); // buscar pelo telefone
         this.App.patch('/alter-status-visitante/:phone/:status', Controller.AlterStatus);
-        this.App.get('/findall-visitantes', Controller.FindAll);
+        this.App.get('/findall-visitantes', Controller.FindBySituaion); // buscar pela situção do visitante
     }
 }
 

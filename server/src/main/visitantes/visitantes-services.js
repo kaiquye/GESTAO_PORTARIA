@@ -19,12 +19,18 @@ class ServicesVisitante {
     }
 
 
-    async FindAll(condition) {
+    async FindBySituaion(condition) {
         try {
             /**
              * @IDEA 
             */
+
+            // VERIFICAR SE O VALOR PASSADO É ACEITO
+            let filter = ['all', "Waiting", "Loaded", "Finalized"]
+            const valid = filter.find(conditions => conditions === condition);
+            if(!validParam) return new AppError(404, 'Parametro não encontrado')
             let Visitante = await Repositories.FindAllBy(condition);
+            
         } catch (error) {
             console.log(error)
             return new AppError(400, 'Erro ao busca visitantes.');
@@ -55,7 +61,7 @@ class ServicesVisitante {
             /**
              * @STATUS 1 : AGUARDANDO 2: CARREGANDO 3: CARREGADO
             */
-           // PASSA O EMAIL OU NOME DO OPERADOR QUE ACEITO A CARGA
+            // PASSA O EMAIL OU NOME DO OPERADOR QUE ACEITO A CARGA
             let Check = await Repositories.FindByPhone(phone);
             if (!Check) return new AppError(400, 'Visitante não encontrado.');
             await Repositories.AlterStatus(phone, status);
