@@ -19,20 +19,19 @@ class Server {
     middlleware() {
         this.App.use(Cors.Config());
         this.App.use(express.json());
-        const socket = new io(server) // iniciando o websocket
-        this.App.use((req, res, next) => {
+        const socket = new io(server) // iniciando o websocket // Configurar o CORS dps
+        this.App.use((req, res, NEXT) => {
             req.io = socket
-            next()
+            NEXT()
         });
     }
     routes() {
         this.App.use('/admin', Admin);  // responsavel por cadastrar os visitantes e controllar os acessos dos usuarios.
         this.App.use('/visitante', Visitantes);   // aguardam serem chamados.
-        this.App.use('/operadores', Operadores); // responsavel por aceita e finalizar as operações dos vistantes.F
-        // criar a rota de error
+        this.App.use('/operadores', Operadores); // responsavel por aceita e finalizar as operações dos vistantes
     }
     StartServer() {
-        this.App.listen(process.env.PORT, () => console.log(`start server in ${process.env.URL}`))
+        this.App.listen(process.env.PORT, () => console.log(`start server in ${process.env.PORT}`))
     }
 }
 (() => {

@@ -12,6 +12,7 @@ class Admin {
              * CASO EXITE LIBERAR.
              * @STATUS 206 
              */
+            console.log(req)
             if (parseInt(req.role) !== 3 /* 3 = ADMIN */ ) return res.status(401).json(new AppError(401, 'Você não tem permissão. Entre em contato com um Administrador.').Error());
             const Created = await Services.Create(req.body);
             if (Created instanceof AppError) return res.status(Created.Status).json(Created.Error());

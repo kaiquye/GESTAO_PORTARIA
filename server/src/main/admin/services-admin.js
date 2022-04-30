@@ -22,7 +22,7 @@ class Services {
         try {
             const { passwordUser, id, username } = await Repositories.VerifyUser(email);
             console.log(passwordUser);
-            if (!passwordUser) return new AppError(400, 'Email não encontrado.');
+            if (!passwordUser) return new AppError(404, 'Email não encontrado.');
             const match = await Bycrpy.compare(password, passwordUser);
             if (!match) return new AppError(300, 'Senha invalida.');
             /**

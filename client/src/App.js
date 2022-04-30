@@ -1,11 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './App.css'
+import FormularioLogin from './components/FormularioLogin';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
+      <main>
+        <p className='tituloPageLogin' >Gestão de portaria</p>
+        <FormularioLogin />
+      </main>
     </div>
   );
 }

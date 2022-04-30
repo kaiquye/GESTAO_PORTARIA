@@ -1,0 +1,16 @@
+.root{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form{
+    width: 260px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+}
+.input{
+    margin: 10px;
+}
