@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css'
 import FormularioLogin from './components/FormularioLogin';
 
-function App() {
+function Login() {
   return (
     <div className="App">
       <main>
@@ -13,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
