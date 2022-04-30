@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Login from './Login';
 import { AuthContextProvider } from './context/Authentication';
+import { BrowserRouter } from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <Login />
-    </AuthContextProvider>
+    <BrowserRouter>
+      <AuthContextProvider>
+        <Login />
+      </AuthContextProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

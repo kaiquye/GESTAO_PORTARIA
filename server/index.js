@@ -28,7 +28,7 @@ class Server {
     routes() {
         this.App.use('/admin', Admin);  // responsavel por cadastrar os visitantes e controllar os acessos dos usuarios.
         this.App.use('/visitante', Visitantes);   // aguardam serem chamados.
-        this.App.use('/operadores', Operadores); // responsavel por aceita e finalizar as operações dos vistantes
+        this.App.use('/operador', Operadores); // responsavel por aceita e finalizar as operações dos vistantes
     }
     StartServer() {
         this.App.listen(process.env.PORT, () => console.log(`start server in ${process.env.PORT}`))

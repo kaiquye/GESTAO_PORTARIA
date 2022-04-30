@@ -18,9 +18,12 @@ const schema = yup.object({
 
 function FormularioLogin() {
 
-    const { SignAdmin } = useContext(AuthContext);
+    //AuthContext
+    const { SignAdmin, SignOperador } = useContext(AuthContext);
+
+    // useStates
     const [email, setEmail] = useState(null);
-    const [password, setPassowrd] = useState(null);q
+    const [password, setPassowrd] = useState(null);
     const [tipoAcesso, setTipoAcesso] = useState(0);
 
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -28,8 +31,10 @@ function FormularioLogin() {
     });
 
     const onSubmit = async data => {
-        alert('terd')
-        console.log('data', data)
+        console.log(tipoAcesso)
+        if (tipoAcesso == 1) return await SignOperador(data.email, data.password);
+        if (tipoAcesso == 2) return await SignAdmin(data.email, data.password)
+        alert('Escolha uma opção de acesso.');
     };
 
     function AtivaButton() {

@@ -19,7 +19,7 @@ class Admin {
             return res.status(201).json({ sucess: true, message: 'Admin cadastrado com sucesso.' })
         } catch (error) {
             console.log(error)
-            return res.status(500).json(new AppError(500, 'Erro : Não foi possivel criar um novo admin.'))
+            return res.status(500).json(new AppError(500))
         }
     }
 
@@ -29,7 +29,7 @@ class Admin {
          * @AUTH QUANDO FOR VERIFICAR O CARGO DO USUARIO : JWT, BUSCAR UM USUARIO NO BANCO,
          * CASO EXITE LIBERAR.
          */
-        console.log('tedted')
+        console.log('tedte--------------------d')
         const Created = await Services.Login(req.body);
         if (Created instanceof AppError) return res.status(Created.Status).json(Created.Error());
         const Token = Authentication.AuthorizedCreateToken(Created);

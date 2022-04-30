@@ -1,5 +1,7 @@
 const AppError = require('../../models/AppError');
 const Services = require('./operador-services');
+const Authentication = require('../../../src/midlleware/Authentication');
+
 /** 
     O operador é responsavel por aceita a carga a garca.Ele tem um painel aonde pode "puxar" o proximo 
     caminhão para ser carregado.
@@ -12,9 +14,8 @@ class ControllerOperador {
 
     async Create(req, res) {
         try {
-            if (req.role !== 3 /* 3 = ADMIN */ ) return res.status(401).json(new AppError(401, 'Você não tem permissão para criar um novo operador. Entre em contato com um adminitrador.').Error());
-            const { username, email, setor, phone, role } = req.body;
-            const Created = await Services.Create(username, email, setor, phone, role)
+            if (req.role !== 3 /* 3 = ADMIN */) return res.status(401).json(new AppError(401, 'Você não tem permissão para criar um novo operador. Entre em contato com um adminitrador.').Error());
+            const Created = await Services.Create(req.body)
             if (Created instanceof AppError) return res.status(Created.Status).json(Created.Error());
             return res.status(201).json({ sucess: true, message: 'Novo operador criado com sucesso.' });
         } catch (error) {
@@ -26,8 +27,6 @@ class ControllerOperador {
     async Login(req, res) {
         /**
          * @YUP 
-         * @AUTH QUANDO FOR VERIFICAR O CARGO DO USUARIO : JWT, BUSCAR UM USUARIO NO BANCO,
-         * CASO EXITE LIBERAR.
          */
         const Authorized = await Services.Login(req.body);
         if (Authorized instanceof AppError) return res.status(Authorized.Status).json(Authorized.Error());
