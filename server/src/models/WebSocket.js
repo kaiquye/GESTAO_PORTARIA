@@ -1,18 +1,17 @@
-const { Server } = require('socket.io')
+
+
 
 class WebSocket {
-    io;
-    constructor(instacerHttp) {
-        return this.io = new Server(instacerHttp);
+
+    #Visitatantes = [];
+
+    new(visitante) {
+        this.#Visitatantes.push(visitante);
     }
 
-    // static SendUpdateStatus() {
-    //     this.io.on('connection', (socket) => {
-    //         socket.emit('update', 'teste emit');
-    //     })
-    // }
-
-    // methodos de busca não precisam de funções
-    // methodos de envio precisam de funções
+    getVisitantesAtivos() {
+        return this.#Visitatantes;
+    }
 }
-module.exports = WebSocket;
+
+module.exports = new WebSocket();

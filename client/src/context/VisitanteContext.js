@@ -1,10 +1,20 @@
 import { createContext } from 'react';
 import VisitanteServices from '../services/Visitante';
 import useStorage from '../hooks/localStorage';
+import { io } from 'socket.io-client';
+
 
 export const VisitanteContext = createContext({});
 
 export function VisitanteContextProvider({ children }) {
+
+    function ConnectionWebSocket() {
+        // const Socket = io("ws://localhost:4000", {
+        //     transports: ["websocket"],
+        // })
+        // return Socket;
+    }
+
 
     const Storage = useStorage();
 
@@ -17,9 +27,14 @@ export function VisitanteContextProvider({ children }) {
         return false;
     };
 
+    async function GetVisitantes() {
+        const vs = VisitanteServices().findAll();
+        console.log(vs);
+    }
+
 
     return (
-        <VisitanteContext.Provider value={{ CadastrarVisitante }} >
+        <VisitanteContext.Provider value={{ CadastrarVisitante, GetVisitantes, ConnectionWebSocket }} >
             {children}
         </VisitanteContext.Provider>
     )

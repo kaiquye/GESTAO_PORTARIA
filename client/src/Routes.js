@@ -10,7 +10,7 @@ function RouteApp() {
             <Routes>
                 <Route path='/' element={<Login />} />
                 <Route path="/admin">
-                    <Route path="painel" element={<PageCadastro />} />
+                    <Route path="painel" element={<PainelChamadaVisitante />} />
                     <Route path="cadastro" element={<PageCadastro />} />
                 </Route>
                 <Route path="/operador">
