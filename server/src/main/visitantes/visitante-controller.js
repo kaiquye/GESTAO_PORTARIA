@@ -5,7 +5,7 @@ const io = require('../../models/WebSocket');
 class ControllerVisitante {
 
     async Create(req, res) {
-        try {
+        try {''
             // enviar e-mail
             /* 
             segurança
@@ -14,7 +14,7 @@ class ControllerVisitante {
             if (parseInt(req.role) !== 3 /* 3 = ADMIN -  */ ) return res.status(401).json(new AppError(401, 'Você não tem permissão para cadastrar um novo visitante. Entre em contato com um administrador.').Error());
             const Created = await Services.Create(req.body);
             if (Created instanceof AppError) return res.status(Created.Status).json(Created.Error());
-            res.status(201).json({ message: 'visitante criado com sucesso.', sucesso: true });
+            res.status(201).json({ message: 'visitante criado com sucesso.', sucess: true });
         } catch (error) {
             console.log(error)
             res.status(500).json(new AppError(500, 'Erro ao criar um novo visitante').Error());

@@ -1,7 +1,6 @@
 body{
     margin: 0px;
     padding: 0px;
-    background-image: linear-gradient(rgb(255, 203, 203), rgb(190, 235, 255));
 }
 .App{
     width: 100%;
@@ -9,6 +8,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: linear-gradient(rgb(255, 203, 203), rgb(190, 235, 255));
 }
 .tituloPageLogin{
     font-family: Arial, Helvetica, sans-serif;

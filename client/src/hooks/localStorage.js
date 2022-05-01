@@ -1,7 +1,7 @@
 const item = '@Token';
 
 
-export default function useStorageToken() {
+export default function useStorageuseStorageToken() {
     return ({
         get: function () {
             return localStorage.getItem(item);

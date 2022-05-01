@@ -1,0 +1,13 @@
+.root{
+    background-color: rgb(240, 128, 128);
+}
+
+
+
+
+@media screen and (min-width: 900px) {
+  .root {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+}

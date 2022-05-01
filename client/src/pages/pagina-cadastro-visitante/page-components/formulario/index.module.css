@@ -1,0 +1,25 @@
+.formulario {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(240, 128, 128);
+  margin: 5px;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 900px) {
+  .root {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    justify-content: center;
+  }
+}
