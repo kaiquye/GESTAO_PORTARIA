@@ -38,6 +38,8 @@ export default function VisitanteServices() {
         findByRegister: function () {
         },
         findAll: function () {
+            //WEBSOCKET
+            // toda vez que cadastramos um novo viistante, uma mensagem é emitida para o servidor do websocket. Quando essa mensagem chegar no servidor ele será salva em um vetor. Esse vetor será chamado quando recarregamos a pagina de visitantes (useEffect)
         },
     })
 }
