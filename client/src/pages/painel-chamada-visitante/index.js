@@ -15,13 +15,6 @@ function PainelChamadaVisitante() {
         transports: ["websocket"],
     })
 
-    /**
-     * @method getVisitantes vou buscar todos os visitantes cadastrados com useEffect, depois vou 
-     * coloca-los em um stato e qtn um um novo visitante for cadastrodo vou fica esperando 
-     * ser emeitido um evendo. Logo em seguida vou adiciona-lo no mesmo stado.
-      */
-
-
     useEffect(() => {
         Socket.emit('findAll')
     }, [])
