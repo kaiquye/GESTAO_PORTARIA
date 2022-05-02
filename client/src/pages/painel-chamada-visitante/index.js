@@ -57,7 +57,7 @@ function PainelChamadaVisitante() {
                     <div className={style.anuncio} >
                         {visitantes && <>
                             <div className={style.placa} >
-                            <label style={{ fontSize: '25px', color: 'pink' }} >Nome</label>
+                            <label style={{ fontSize: '25px', color: 'pink' }} >Nome </label>
                                 <h1>
                                     {
                                         visitantes[0].username
