@@ -8,10 +8,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(rgb(255, 203, 203), rgb(190, 235, 255));
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
 }
 .tituloPageLogin{
     font-family: Arial, Helvetica, sans-serif;
-    color: #222;
-    font-weight: 600;
+    color: rgb(112, 112, 112);
+    font-size: 24px;
 }

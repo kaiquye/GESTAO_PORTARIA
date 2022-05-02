@@ -14,3 +14,7 @@
 .input{
     margin: 10px;
 }
+.button{
+    background-color: palevioletred;
+    color: white;
+}

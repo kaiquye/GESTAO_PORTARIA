@@ -55,7 +55,7 @@ function FormularioLogin() {
                     onChange={(e) => setPassowrd(e.target.value)} />
                 <p style={{ color: 'red' }} >{errors.password?.message}</p>
                 <Radios  {...register('acesso')} setAcesso={setTipoAcesso} acesso={tipoAcesso} />
-                <Button type='submit' variant="contained" disabled={AtivaButton()}>
+                <Button className={style.button} type='submit' variant="contained" disabled={AtivaButton()}>
                     Entrar
                 </Button>
             </form>

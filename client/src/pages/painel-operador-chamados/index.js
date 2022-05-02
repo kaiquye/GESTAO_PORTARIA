@@ -11,6 +11,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import AccessibilityIcon from '@material-ui/icons/Accessibility';
 
 function PageOperador() {
 
@@ -48,40 +49,48 @@ function PageOperador() {
     })
 
     return (
-        <main>
-            <section>
-                <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Nome</TableCell>
-                                <TableCell align="right">sdasdasdasdasda</TableCell>
-                                <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                                <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                                <TableCell align="right">Protein&nbsp;(g)</TableCell>
+        <div className={style.main} >
+            <div className={style.background} >
+            </div>
+            <TableContainer className={style.tabela} component={Paper}>
+                <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Nome</TableCell>
+                            <TableCell align="right">Setor</TableCell>
+                            <TableCell align="right">Telefone</TableCell>
+                            <TableCell align="right">Placa</TableCell>
+                            <TableCell align="right">Seriços</TableCell>
+                            <TableCell align="right">Ação</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {visitantes && visitantes.map((visitante, index) => (
+                            <TableRow
+                                key={index}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                                <TableCell component="th" scope="row">
+                                    {visitante.username}
+                                </TableCell>
+                                <TableCell align="right">{visitante.sector}</TableCell>
+                                <TableCell align="right">{visitante.phone}</TableCell>
+                                <TableCell align="right">{visitante.plate_truck}</TableCell>
+                                <TableCell align="right">{visitante.services}</TableCell>
+                                <TableCell align="right">
+                                    <Button className={style.buttonChamar}  >
+                                        Iniciar
+                                    </Button>
+                                    <Button className={style.buttonFinalizar}>
+                                        finalizar
+                                    </Button>
+                                </TableCell>
                             </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {visitantes && visitantes.map((visitante, index) => (
-                                <TableRow
-                                    key={index}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        {visitante.username}
-                                    </TableCell>
-                                    <TableCell align="right">{visitante.sector}</TableCell>
-                                    <TableCell align="right">{visitante.phone}</TableCell>
-                                    <TableCell align="right">{visitante.plate_truck}</TableCell>
-                                    <TableCell align="right">{visitante.services}</TableCell>
-
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </section>
-        </main>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </div>
     )
 }
 
