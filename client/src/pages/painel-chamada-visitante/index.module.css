@@ -1,0 +1,40 @@
+.anuncio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    gap: 120px;
+    margin-bottom: 50px;
+}
+.placa{
+    overflow: hidden;
+    text-align: center;
+    max-width: 30%;
+    min-width: 20%;
+    font-size: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    background-color: white;
+    padding-left: 90px;
+    padding-right: 90px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: black 4px 4px 4px 3px;
+    color: rgb(83, 83, 83);
+}
+.nome{
+    overflow: hidden;
+    text-align: center;
+    max-width: 30%;
+    min-width: 20%;
+    font-size: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    background-color: white;
+    padding-left: 90px;
+    padding-right: 90px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: black 4px 4px 4px 3px;
+    color: rgb(83, 83, 83);
+}

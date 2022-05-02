@@ -7,7 +7,7 @@ class WebSocket {
     }
 
     getVisitantesAtivos() {
-        const T = this.#Visitatantes.filter(visitante => visitante.status_truck == 1);
+        const T = this.#Visitatantes.filter(visitante => visitante.status_truck !== 1);
         return this.#Visitatantes;
     }
 }

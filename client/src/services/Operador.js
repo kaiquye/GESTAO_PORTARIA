@@ -17,7 +17,7 @@ export default function OperadorServices() {
          */
         Sign: async function (email, password) {
             try {
-                const response = await API.post('/login-operador', { email, password });
+                const response = await API.post('/login-operador', { email, password }); 
                 console.log(response);
                 const data = response.data;
                 return {
