@@ -27,6 +27,6 @@ principais ferramentas
 
 Front 
 - Material-ui
-- React.js
+- React.Js
 - HTML 
 - CSS
