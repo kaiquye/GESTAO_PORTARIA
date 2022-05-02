@@ -33,7 +33,7 @@ function FormularioLogin() {
     const onSubmit = async data => {
         console.log(tipoAcesso)
         if (tipoAcesso == 1) return await SignOperador(data.email, data.password);
-        if (tipoAcesso == 2) return await SignAdmin(data.email, data.password)
+        if (tipoAcesso == 2) return await SignAdmin(data.email, data.password);
         alert('Escolha uma opção de acesso.');
     };
 

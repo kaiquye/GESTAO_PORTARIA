@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import Formulario from './page-components/formulario';
 import { VisitanteContext } from '../../context/VisitanteContext';
+import logo from './logo.png'
+import style from './index.module.css'
 
 function PageCadastro() {
 
@@ -9,23 +11,17 @@ function PageCadastro() {
     // const Socket = io("ws://localhost:4000", {
     //     transports: ["websocket"],
     // })
-
     // Socket.on('update', (data) => console.log('body', data))
 
     return (
-        <>
-            <main>
-                <section>
-                    status do cadastro
-                </section>
-                <sectio>
-                    <button>
-                        tested
-                    </button>
-                    <Formulario />
-                </sectio>
-            </main>
-        </>
+        <main className={style.main}>
+            <section className={style.section} >
+                <img className={style.img} src={logo} />
+            </section>
+            <sectio className={style.form} >
+                <Formulario />
+            </sectio>
+        </main>
     )
 }
 

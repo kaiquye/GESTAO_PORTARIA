@@ -1,9 +1,13 @@
-.root{
-    background-color: rgb(240, 128, 128);
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-
-
+.img{
+  width: 200px;
+  margin-top: 40px;
+}
 
 @media screen and (min-width: 900px) {
   .root {

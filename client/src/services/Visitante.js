@@ -31,15 +31,17 @@ export default function VisitanteServices() {
                 }
             }
         },
-        updateStatus: async function (phone, status) {
+        updateStatus: async function (phone, status, Token) {
+            console.log(Token);
             try {
-                const response = await API.put(`/alter-status-visitante/${phone}/${status}`, { headers: { 'authorization': Storage.get() } })
-                const data  = response.data;
+                const response = await API.patch(`/alter-status-visitante/${phone}/${status}`, {}, { headers: { 'authorization': Token } })
+                console.log(response);
+                const data = response.data;
                 return {
-                    ok : true
+                    ok: true
                 }
             } catch (error) {
-                console.log(error)
+                console.log({ error })
             }
         },
         delete: function () {

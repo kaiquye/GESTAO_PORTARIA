@@ -13,7 +13,6 @@ export function OperadorContextProvider({children}) {
 
     }
 
-
     return (
         <OperadorContext.Provider>
             {children}

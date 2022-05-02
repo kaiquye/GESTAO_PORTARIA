@@ -50,13 +50,14 @@ function PainelChamadaVisitante() {
     return (
         <>
             <section>
-                <h1>
-                    lista
+                <h1 className={style.listadechamada} >
+                    Lista de chamada
                 </h1>
                 <main>
                     <div className={style.anuncio} >
                         {visitantes && <>
                             <div className={style.placa} >
+                                <label style={{fontSize : '25px', color : 'pink'}} >Placa</label>
                                 <h1>
                                     {
                                         visitantes[0].username
@@ -64,6 +65,7 @@ function PainelChamadaVisitante() {
                                 </h1>
                             </div>
                             <div className={style.nome} >
+                                <label style={{fontSize : '25px', color : 'pink'}} >Nome</label>
                                 <h1>
                                     {
                                         visitantes[0].plate_truck
@@ -75,7 +77,7 @@ function PainelChamadaVisitante() {
                     </div>
                     <div>
                         <TableContainer component={Paper}>
-                            <h1>Passados</h1>
+                            <h1 className={style.listadechamada} >Passados</h1>
                             <Table size="small" aria-label="a dense table">
                                 <TableHead>
                                     <TableRow>

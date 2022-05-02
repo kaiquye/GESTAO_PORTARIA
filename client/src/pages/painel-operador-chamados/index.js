@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState, useRef } from 'react'
 import style from './index.module.css';
 import { io } from 'socket.io-client';
 import { VisitanteContext } from '../../context/VisitanteContext';
@@ -17,6 +17,7 @@ function PageOperador() {
 
     const { AlterStatus } = useContext(VisitanteContext);
     const [visitantes, setVisitantes] = useState();
+    const ref = useRef();
 
 
     const Socket = io("ws://localhost:4000", {
@@ -78,7 +79,9 @@ function PageOperador() {
                                 <TableCell align="right">{visitante.plate_truck}</TableCell>
                                 <TableCell align="right">{visitante.services}</TableCell>
                                 <TableCell align="right">
-                                    <Button className={style.buttonChamar}  >
+                                    <Button onClick={async () => {
+                                        await AlterStatus(visitante.phone, 0)
+                                    }} className={style.buttonChamar}   >
                                         Iniciar
                                     </Button>
                                     <Button className={style.buttonFinalizar}>
@@ -90,7 +93,7 @@ function PageOperador() {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </div>
+        </div >
     )
 }
 

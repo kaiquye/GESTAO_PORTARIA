@@ -45,8 +45,8 @@ function Formulario() {
                 <TextField {...register('ativo')} name='ativo' className={style.inputForm} id="filled-basic" label="Ativo" variant="filled" />
                 <TextField {...register('servico')} name='servico' className={style.inputForm} id="filled-basic" label="Serviço" variant="filled" />
                 <TextField {...register('autorizacao')} name='autorizacao' className={style.inputForm} id="filled-basic" label="Autorização" variant="filled" />
-                <div>
-                    <Button type='submit' variant="contained" color="primary">
+                <div className={style.buttons} >
+                    <Button style={{backgroundColor : '#dd909d'}}  type='submit' variant="contained" color="primary">
                         cadastrar
                     </Button>
                     <Button variant="contained" color="primary">

@@ -33,7 +33,8 @@ export function VisitanteContextProvider({ children }) {
     }
 
     async function AlterStatus(phone, status) {
-        await VisitanteServices().updateStatus(phone, status);
+        const Token = Storage.get();
+        await VisitanteServices().updateStatus(phone, status, Token);
     }
 
 
