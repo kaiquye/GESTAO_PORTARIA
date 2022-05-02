@@ -23,7 +23,7 @@ const io = new Server(MyServer);
 io.on('connection', (socket) => {
     socket.on('findAll', () => {
         console.log('chamou findall')
-        const Visitantes = WebSocket.getVisitantesAtivos();
+        const Visitantes = WebSocket.newVisitanteInt();
         io.emit('getAll', Visitantes);
     })
 })

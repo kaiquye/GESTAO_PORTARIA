@@ -63,7 +63,7 @@ class ServicesVisitante {
             */
             // PASSA O EMAIL OU NOME DO OPERADOR QUE ACEITO A CARGA
             let Check = await Repositories.FindByPhone(phone);
-            if (!Check) return new AppError(400, 'Visitante não encontrado.');
+            if (!Check[0]) return new AppError(400, 'Visitante não encontrado.');
             await Repositories.AlterStatus(phone, status);
             /**
              * @SOCKETio Toda vez que o status do veiculo for alterado emitir uma mensagem com socket.oi  

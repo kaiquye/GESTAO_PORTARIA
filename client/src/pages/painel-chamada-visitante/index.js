@@ -19,7 +19,7 @@ function PainelChamadaVisitante() {
      * so funciona s eue chama
      */
 
-    const [visitantes, setVisitantes] = useState([]);
+    const [visitantes, setVisitantes] = useState(null);
 
     const Socket = io("ws://localhost:4000", {
         transports: ["websocket"],
@@ -30,70 +30,79 @@ function PainelChamadaVisitante() {
     }, [])
 
     Socket.on('update', (data) => {
-        console.log('tedted', data)
-        setVisitantes([...visitantes, data]);
+        if(!visitantes === null) {
+            const teste = [...visitantes, ...data];
+            setVisitantes(teste);
+        }else{
+            setVisitantes(data);
+        }
     });
-
+    // tenho que busca todos que estão com o status alterado. O backend vai emitr um evento. 
     Socket.on('getAll', (data) => {
         console.log([data])
         console.log('data....', { data });
-        setVisitantes(data)
+        if (data.length) {
+            setVisitantes(data)
+        }
     })
 
+
     return (
-        <section>
-            <h1>
-                lista de visitantesasss
-            </h1>
-            <main>
-                <div className={style.anuncio} >
-                    {visitantes[0] && <>
-                        <div className={style.placa} >
-                            <h1>
-                                {
-                                    visitantes[0].username
-                                }
-                            </h1>
-                        </div>
-                        <div className={style.nome} >
-                            <h1>
-                                {
-                                    visitantes[0].plate_truck
-                                }
-                            </h1>
-                        </div>
-                    </>
-                    }
-                </div>
-                <div>
-                    <TableContainer component={Paper}>
-                        <h1>Passados</h1>
-                        <Table size="small" aria-label="a dense table">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell >Nome </TableCell>
-                                    <TableCell align="left">Placa </TableCell>
-                                    <TableCell align="left">Setor </TableCell>
-                                    <TableCell align="left">Serviço </TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {visitantes && visitantes.map((vistante, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell component="th" scope="row">
-                                            {vistante.username}
-                                        </TableCell>
-                                        <TableCell align="left">{vistante.plate_truck}</TableCell>
-                                        <TableCell align="left">{vistante.sector}</TableCell>
-                                        <TableCell align="left">{vistante.services}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                </div>
-            </main>
-        </section>
+        <>
+            <section>
+                <h1>
+                    lista
+                </h1>
+                <main>
+                    <div className={style.anuncio} >
+                        {visitantes && <>
+                            <div className={style.placa} >
+                                <h1>
+                                    {
+                                        visitantes[0].username
+                                    }
+                                </h1>
+                            </div>
+                            <div className={style.nome} >
+                                <h1>
+                                    {
+                                        visitantes[0].plate_truck
+                                    }
+                                </h1>
+                            </div>
+                        </>
+                        }
+                    </div>
+                    <div>
+                        {/* <TableContainer component={Paper}>
+                                <h1>Passados</h1>
+                                <Table size="small" aria-label="a dense table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell >Nome </TableCell>
+                                            <TableCell align="left">Placa </TableCell>
+                                            <TableCell align="left">Setor </TableCell>
+                                            <TableCell align="left">Serviço </TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {visitantes && visitantes.map((vistante, index) => (
+                                            <TableRow key={index}>
+                                                <TableCell component="th" scope="row">
+                                                    {vistante.username}
+                                                </TableCell>
+                                                <TableCell align="left">{vistante.plate_truck}</TableCell>
+                                                <TableCell align="left">{vistante.sector}</TableCell>
+                                                <TableCell align="left">{vistante.services}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer> */}
+                    </div>
+                </main>
+            </section>
+        </>
     )
 }
 

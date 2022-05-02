@@ -13,7 +13,8 @@ class ControllerVisitante {
             if (parseInt(req.role) !== 3 /* 3 = ADMIN -  */) return res.status(401).json(new AppError(401, 'Você não tem permissão para cadastrar um novo visitante. Entre em contato com um administrador.').Error());
             const Created = await Services.Create(req.body);
             if (Created instanceof AppError) return res.status(Created.Status).json(Created.Error());
-            req.io.emit('update', req.body);
+            // req.io.emit('update', req.body);
+            // EMITIR UM EVENTO PARA A TELA DE OPERADORES QUANDO FOR CRIADO
             WebSocket.new(req.body); // adiciono o novo visitante a um array;
             res.status(201).json({ message: 'visitante criado com sucesso.', sucess: true });
         } catch (error) {
@@ -59,10 +60,11 @@ class ControllerVisitante {
             /* 
             segurança
             */
-            if (req.role !== 2 /* 2 = OPDERADOR -  */) return res.status(401).json(new AppError(401, 'Você não tem permissão para alterar o status de um visitante. Entre em contato com um operador.').Error());
             const Visitante = await Services.AlterStatus(req.params.phone, req.params.status);
             if (Visitante instanceof AppError) return res.status(Visitante.Status).json(Visitante.Error());
-            req.io.emit('tested', 'tedted');
+            const visitantes = WebSocket.newVisitanteInt(req.params.phone);
+            console.log('esses', visitantes);
+            req.io.emit('update', visitantes);
             return res.status(200).json({ sucess: true, message: 'alterado com sucesso.' });
         } catch (error) {
             console.log(error)

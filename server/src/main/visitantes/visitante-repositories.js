@@ -24,7 +24,7 @@ class RepositoriesVisitantes {
     }
     async FindAllBy(condition) {
         console.log(condition)
-        // FILTAR QUAL QUERY VAI RODA.        
+        // FILTAR QUAL QUERY VAI SER EXECUTADA.        
         var All = 'select * from visitantes where status in (0,1,2)'
         var Waiting = 'select * from visitantes where status = 0'
         var Loaded = 'select * from visitantes where status = 1'
