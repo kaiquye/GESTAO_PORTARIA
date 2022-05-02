@@ -74,7 +74,7 @@ function PainelChamadaVisitante() {
                         }
                     </div>
                     <div>
-                        {/* <TableContainer component={Paper}>
+                        <TableContainer component={Paper}>
                                 <h1>Passados</h1>
                                 <Table size="small" aria-label="a dense table">
                                     <TableHead>
@@ -98,7 +98,7 @@ function PainelChamadaVisitante() {
                                         ))}
                                     </TableBody>
                                 </Table>
-                            </TableContainer> */}
+                            </TableContainer>
                     </div>
                 </main>
             </section>
