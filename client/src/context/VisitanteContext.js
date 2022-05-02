@@ -32,9 +32,13 @@ export function VisitanteContextProvider({ children }) {
         console.log(vs);
     }
 
+    async function AlterStatus(phone, status) {
+        await VisitanteServices().updateStatus(phone, status);
+    }
+
 
     return (
-        <VisitanteContext.Provider value={{ CadastrarVisitante, GetVisitantes, ConnectionWebSocket }} >
+        <VisitanteContext.Provider value={{ CadastrarVisitante, AlterStatus, GetVisitantes, ConnectionWebSocket }} >
             {children}
         </VisitanteContext.Provider>
     )

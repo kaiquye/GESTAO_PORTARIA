@@ -21,10 +21,17 @@ App.use(express.json());
 // iniciando o webSocket
 const io = new Server(MyServer);
 io.on('connection', (socket) => {
+    // lista de visitantes
     socket.on('findAll', () => {
         console.log('chamou findall')
         const Visitantes = WebSocket.newVisitanteInt();
         io.emit('getAll', Visitantes);
+    })
+    // lista de visitantes para os operadores
+    socket.on('find', () => {
+        console.log('chamou findall')
+        const Visitantes = WebSocket.get();
+        io.emit('all', Visitantes);
     })
 })
 

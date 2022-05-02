@@ -7,9 +7,9 @@ class WebSocket {
         this.#Visitatantes.push(visitante);
     }
 
-    newVisitanteInt(phone){
+    newVisitanteInt(phone) {
         console.log(this.#Visitatantes);
-        if(!phone) return this.#VisitantesInt;
+        if (!phone) return this.#VisitantesInt;
         const visitante = this.#Visitatantes.filter(visitante => visitante.phone == phone);
         console.log("filtro", visitante);
         this.#VisitantesInt.push(...visitante);
@@ -18,6 +18,21 @@ class WebSocket {
 
     getVisitantesAtivos() {
         const T = this.#Visitatantes.filter(visitante => visitante.status_truck !== 1);
+        return T;
+    }
+
+
+    alterStatus() {
+        // busco o visitante.
+        const visitante = this.#Visitatantes.find(visitante)
+        console.log(visitante);
+        const newVisitante = visitante.phone = phone;
+        const arraySemOvisitate = this.#Visitatantes.filter(visitante => visitante.phone !== phone);
+        console.log(arraySemOvisitate);
+    }
+
+    get() {
+        const T = this.#Visitatantes.filter(visitante => visitante.status_truck === 1);
         return T;
     }
 }

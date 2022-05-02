@@ -31,15 +31,20 @@ export default function VisitanteServices() {
                 }
             }
         },
-        updateStatus: function () {
+        updateStatus: async function (phone, status) {
+            try {
+                const response = await API.put(`/alter-status-visitante/${phone}/${status}`, { headers: { 'authorization': Storage.get() } })
+                const data  = response.data;
+                return {
+                    ok : true
+                }
+            } catch (error) {
+                console.log(error)
+            }
         },
         delete: function () {
         },
         findByRegister: function () {
-        },
-        findAll: function () {
-            //WEBSOCKET
-            // toda vez que cadastramos um novo viistante, uma mensagem é emitida para o servidor do websocket. Quando essa mensagem chegar no servidor ele será salva em um vetor. Esse vetor será chamado quando recarregamos a pagina de visitantes (useEffect)
-        },
+        }
     })
 }

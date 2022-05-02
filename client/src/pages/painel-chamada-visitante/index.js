@@ -30,10 +30,10 @@ function PainelChamadaVisitante() {
     }, [])
 
     Socket.on('update', (data) => {
-        if(!visitantes === null) {
-            const teste = [...visitantes, ...data];
-            setVisitantes(teste);
-        }else{
+        if (!visitantes === null) {
+            const array = [...visitantes, ...data];
+            setVisitantes(array);
+        } else {
             setVisitantes(data);
         }
     });
@@ -75,30 +75,30 @@ function PainelChamadaVisitante() {
                     </div>
                     <div>
                         <TableContainer component={Paper}>
-                                <h1>Passados</h1>
-                                <Table size="small" aria-label="a dense table">
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell >Nome </TableCell>
-                                            <TableCell align="left">Placa </TableCell>
-                                            <TableCell align="left">Setor </TableCell>
-                                            <TableCell align="left">Serviço </TableCell>
+                            <h1>Passados</h1>
+                            <Table size="small" aria-label="a dense table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell >Nome </TableCell>
+                                        <TableCell align="left">Placa </TableCell>
+                                        <TableCell align="left">Setor </TableCell>
+                                        <TableCell align="left">Serviço </TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {visitantes && visitantes.map((vistante, index) => (
+                                        <TableRow key={index}>
+                                            <TableCell component="th" scope="row">
+                                                {vistante.username}
+                                            </TableCell>
+                                            <TableCell align="left">{vistante.plate_truck}</TableCell>
+                                            <TableCell align="left">{vistante.sector}</TableCell>
+                                            <TableCell align="left">{vistante.services}</TableCell>
                                         </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {visitantes && visitantes.map((vistante, index) => (
-                                            <TableRow key={index}>
-                                                <TableCell component="th" scope="row">
-                                                    {vistante.username}
-                                                </TableCell>
-                                                <TableCell align="left">{vistante.plate_truck}</TableCell>
-                                                <TableCell align="left">{vistante.sector}</TableCell>
-                                                <TableCell align="left">{vistante.services}</TableCell>
-                                            </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
                     </div>
                 </main>
             </section>
