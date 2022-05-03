@@ -60,7 +60,7 @@ class ControllerVisitante {
             /* 
             segurança
             */
-            // if (parseInt(req.role) !== 2 /* 3 = ADMIN -  */) return res.status(401).json(new AppError(401, 'Você não tem permissão para cadastrar um novo visitante. Entre em contato com um operador.').Error());
+            if (parseInt(req.role) !== 2 /* 3 = ADMIN -  */) return res.status(401).json(new AppError(401, 'Você não tem permissão para cadastrar um novo visitante. Entre em contato com um operador.').Error());
             const Visitante = await Services.AlterStatus(req.params.phone, req.params.status);
             if (Visitante instanceof AppError) return res.status(Visitante.Status).json(Visitante.Error());
             const visitantes = WebSocket.newVisitanteInt(req.params.phone);
