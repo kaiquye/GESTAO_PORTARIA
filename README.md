@@ -1,4 +1,4 @@
-### GESTÃO DE PORTARIA 🎈
+### GESTÃO DE PORTARIA 🎈 [ não finalizado ]
 
 **Neste projeto eu aproveito para aprimorar meus conhecimetos sobre WebSockets**.
 
