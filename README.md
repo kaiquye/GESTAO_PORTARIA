@@ -2,6 +2,8 @@
 
 **Neste projeto eu aproveito para aprimorar meus conhecimetos sobre WebSockets**.
 
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+
 ![image](https://user-images.githubusercontent.com/69175890/166339282-5795d22a-a9fb-43ec-aa39-957cbfb1c4f5.png)
 
 
